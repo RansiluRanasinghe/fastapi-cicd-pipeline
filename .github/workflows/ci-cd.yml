@@ -66,3 +66,7 @@ jobs:
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-cicd-app:latest
           ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-cicd-app:${{ github.sha }}
+
+    - name: Trigger Live Deployment on Render
+      run: |
+        curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"      
